@@ -10,7 +10,12 @@ gem 'foreman'
 gem 'devise'
 #Translations for the devise gem
 gem 'devise-i18n'
-
+#Rails gem of the Bootstrap based admin theme SB Admin 2. 
+gem 'bootstrap_sb_admin_base_v2'
+#Boostrap
+gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
+#Normalize.css is an alternative to CSS resets
+gem 'normalize-rails'
 
 # **
 
