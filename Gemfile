@@ -16,6 +16,8 @@ gem 'bootstrap_sb_admin_base_v2'
 gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
 #Normalize.css is an alternative to CSS resets
 gem 'normalize-rails'
+#Notify JS
+gem 'rails-assets-notifyjs', source: 'https://rails-assets.org'
 
 # **
 
