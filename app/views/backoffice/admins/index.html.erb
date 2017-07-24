@@ -1,2 +1,59 @@
-<h1>Backoffice::Admins#index</h1>
-<p>Find me in app/views/backoffice/admins/index.html.erb</p>
+<h1 class="page-header">Admins</h1>
+
+<% if notice %>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= notice %>
+    </div>
+<% end -%>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Todos os admins
+        <%= link_to new_backoffice_admin_path, class:'btn btn-success btn-circle pull-right', style:'margin-top: -5px' do %>
+            <i class="fa fa-plus"></i>
+        <% end %>
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @admins.each do |admin| %>
+                    <tr>
+                        <td><%= admin.id %></td>
+                        <td><%= admin.name %></td>
+                        <td><%= admin.email %></td>
+                        <td style="width: 150px"> 
+                            <%= link_to edit_backoffice_admin_path(admin), class:"btn btn-primary btn-circle" do %>
+                            <i class="fa fa-edit"></i>
+                            <% end %>
+                        </td>
+                        <td>
+                        <% if current_admin.id != admin.id %>
+                            <%= link_to backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data: {confirm: "Você desejá mesmo excluir <b>#{admin.email}</b>?" } do%>
+                                    <i class="fa fa-minus"></i>
+                            <% end %>
+                        <% else %>
+                            <%= link_to '#', disabled: "disabled",class:"btn btn-danger btn-circle" do%>
+                                <i class="fa fa-minus"></i>
+                            <% end -%>
+                        <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
