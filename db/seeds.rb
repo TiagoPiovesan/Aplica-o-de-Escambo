@@ -31,6 +31,11 @@ puts "Categorias cadastradas com sucesso!"
 
 puts "Cadastrando administrador padrão..."
 
-Admin.create(name: "Admin",email: "admin@admin.com", password: "123456", password_confirmation: "123456")
+Admin.create(name: "Admin",
+  email: "admin@admin.com", 
+  password: "123456", 
+  password_confirmation: "123456",
+  role: 0
+  )
 
 puts "Administrador cadastrado com sucesso!"
