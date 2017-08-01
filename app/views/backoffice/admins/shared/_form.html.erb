@@ -17,21 +17,32 @@
         <div class="col-lg-6">
         <%= form_for([:backoffice, @admin]) do |f| %>
             <div class="form-group">
-               <label>Nome</label>
-                <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Nome do Administrador", autofocus: "autofocus" %>
+               <%= f.label :name %>
+               <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Nome do Administrador", autofocus: "autofocus" %>
             </div>
             <div class="form-group">
-               <label>E-mail</label>
-                <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail do Administrador", autofocus: "autofocus" %>
+               <%= f.label :email %>
+               <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail do Administrador", autofocus: "autofocus" %>
+            </div>
+
+            <% if policy(@admin).edit? %>
+                <div class="form-group">
+                <%= f.label :role %>
+                <%= f.collection_radio_buttons(:role, options_for_roles, :id, :description) do |b| %>
+                  <div class="radio">
+                    <%= b.label { b.radio_button + b.text } %>
+                  </div>
+                <% end %>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+               <%= f.label :password %>
+               <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha" %>
             </div>
             <div class="form-group">
-              <br/>
-                <label>Senha</label>
-                <%= f.password_field :password, autocomplete: "off", autocomplete: "off", class: "form-control", placeholder: "Senha do Administrador" %>
-            </div>
-            <div class="form-group">
-                <label>Confirmação da senha</label>
-                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmação da senha" %>
+               <%= f.label :password_confirmation %>
+               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmação da senha" %>
             </div>
             <%= f.submit "Salvar", class:'btn btn-default' %>
             <% end %>

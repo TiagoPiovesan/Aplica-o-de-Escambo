@@ -7,6 +7,18 @@
                 </div>
                 <div class="panel-body">
                   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <% if flash %>
+                    <% flash.each do |key, value| %>
+                      <div class="alert alert-warning">
+                        <a href="#" data-dismiss="alert" class="close">×</a>
+                        <ul>
+                          <li>
+                            <%= value %>
+                          </li>
+                        </ul>
+                      </div>
+                    <% end %>
+                  <% end %>
                       <form role="form">
                           <fieldset>
                               <div class="form-group">
