@@ -28,7 +28,6 @@
                     <tr>
                         <th><%= @admins.model.human_attribute_name('id') %></th>
                         <th><%= @admins.model.human_attribute_name('name') %></th>
-                        <th><%= @admins.model.human_attribute_name('email') %></th>
                         <th><%= @admins.model.human_attribute_name('role') %></th>
                         <th></th>
                         <th></th>
@@ -37,25 +36,25 @@
                 <tbody>
                 <% @admins.each do |admin| %>
                     <tr>
-                        <td><%= admin.id %></td>
-                        <td><%= admin.name %></td>
-                        <td><%= admin.email %></td>
-                        <td><%= admin.role_i18n %></td>
-                        <td style="width: 150px"> 
-                            <%= link_to edit_backoffice_admin_path(admin), class:"btn btn-primary btn-circle" do %>
-                            <i class="fa fa-edit"></i>
-                            <% end %>
-                        </td>
-                        <td>
-                        <% if current_admin.id != admin.id %>
-                            <%= link_to backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data: {confirm: t('messages.confirm_with', item: admin.name) } do%>
-                                    <i class="fa fa-minus"></i>
-                            <% end %>
-                        <% else %>
-                            <%= link_to '#', disabled: "disabled",class:"btn btn-danger btn-circle" do%>
-                                <i class="fa fa-minus"></i>
-                            <% end -%>
-                        <% end %>
+                      <td><%= admin.id %></td>
+                      <td><%= admin.name %></td>
+                      <td><%= admin.role_i18n %></td>
+                      <td style="width: 150px"> 
+                          <%= link_to edit_backoffice_send_mail_path(admin), class:"btn btn-info btn-circle", remote: true do %>
+                              <i class="fa fa-envelope"></i>
+                          <% end %>
+                          <%= link_to edit_backoffice_admin_path(admin), class:"btn btn-primary btn-circle" do %>
+                              <i class="fa fa-edit"></i>
+                          <% end %>
+                          <% if current_admin.id != admin.id && policy(@admins).destroy? %>
+                              <%= link_to backoffice_admin_path(admin), method: :delete, class:"btn btn-danger btn-circle", data: {confirm: t('messages.confirm_with', item: admin.name) } do%>
+                                      <i class="fa fa-minus"></i>
+                          <% end %>
+                          <% else %>
+                              <%= link_to '#', disabled: "disabled",class:"btn btn-danger btn-circle" do%>
+                                  <i class="fa fa-minus"></i>
+                              <% end -%>
+                          <% end %>
                         </td>
                     </tr>
                 <% end %>
@@ -66,3 +65,5 @@
     </div>
     <!-- /.panel-body -->
 </div>
+
+<%= render partial: 'backoffice/admins/shared/send_mail' %>

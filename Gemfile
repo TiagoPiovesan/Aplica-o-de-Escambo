@@ -18,6 +18,15 @@ gem 'normalize-rails'
 gem 'enum_help'
 #Minimal authorization through OO design and pure Ruby classes
 gem "pundit"
+# O Lero-lero Generator é uma ferramenta capaz de gerar frases que 'falam' muita coisa mas que não tem conteúdo algum.
+gem 'lerolero_generator'
+# Markdown Lorem Ipsum generator
+gem 'doctor_ipsum'
+#Integration of RubyMoney - Money with Rails
+gem 'money-rails'
+#Easy file attachment management for ActiveRecord 
+gem 'paperclip', '~> 5.0.0'
+
 
 
 source 'https://rails-assets.org' do
@@ -68,6 +77,9 @@ group :development, :test do
 
   #A library for generating fake data such as names, addresses, and phone numbers.
   gem 'faker'  
+
+  #Catches mail and serves it through a dream. 
+  gem 'mailcatcher'
   # **
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
