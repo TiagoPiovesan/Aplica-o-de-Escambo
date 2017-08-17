@@ -1,8 +1,8 @@
-class Site::HomeController < ApplicationController
-  layout "site"
+class Site::HomeController < SiteController
 
   def index
     @categories = Category.order_by_description
-    @ads = Ad.last_six
+    @ads = Ad.descending_order(10)
   end
+  
 end
