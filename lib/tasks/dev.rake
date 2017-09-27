@@ -1,3 +1,4 @@
+# rake dev:setup
 namespace :dev do
 
   desc "Setup Development"
@@ -73,7 +74,7 @@ namespace :dev do
         category: Category.all.sample,
         price: "#{Random.rand(500)}, #{Random.rand(99)}",
         picture: File.new(
-          Rails.root.join('public', 'templates', 'images-for-ads',"#{Random.rand(9)}.jpg"), 'r')
+        Rails.root.join('public', 'templates', 'images-for-ads',"#{Random.rand(9)}.jpg"), 'r')
       )
     end
 
