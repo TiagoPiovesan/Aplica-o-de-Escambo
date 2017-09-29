@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
     namespace :profile do
       resources :dashboard, only: [:index]
-      resources :ads, only: [:index, :edit, :update]
+      resources :ads, only: [:index, :edit, :update, :new, :create]
     end
+
+    resources :ad_detail, only: [:show]
   end
 
   get 'admin' => 'backoffice/dashboard#index'
@@ -18,8 +20,11 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index'
   end
 
+# Pular a parte de registro dos admins, será feito manualmente dentro do admin/backoffice
   devise_for :admins, :skip => [:registrations]
-  devise_for :members
+  # redirecionando a rota dos membros, após o login
+  devise_for :members, controllers: { sessions: 'members/sessions' }
+
 
   root 'site/home#index'
 

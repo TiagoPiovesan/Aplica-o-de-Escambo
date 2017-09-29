@@ -42,4 +42,7 @@
         title: Título
         description: Descrição
         member_id: Código do Usuário
-        category_id: Código da Categoria
+        category: Categoria
+        finish_date: Data de finalização
+        picture: Imagem
+        price: Preço

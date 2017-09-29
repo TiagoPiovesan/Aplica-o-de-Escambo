@@ -59,6 +59,7 @@ namespace :dev do
         title: Faker::Lorem.sentence([2,3,4,5].sample),
         description: LeroleroGenerator.paragraph(Random.rand(1..3)),
         member: Member.first,
+        finish_date: Date.today + Random.rand(90),
         category: Category.all.sample,
         price: "#{Random.rand(500)}, #{Random.rand(99)}",
         picture: File.new(
@@ -71,6 +72,7 @@ namespace :dev do
         title: Faker::Lorem.sentence([2,3,4,5].sample),
         description: LeroleroGenerator.paragraph(Random.rand(1..3)),
         member: Member.all.sample,
+        finish_date: Date.today + Random.rand(90),
         category: Category.all.sample,
         price: "#{Random.rand(500)}, #{Random.rand(99)}",
         picture: File.new(

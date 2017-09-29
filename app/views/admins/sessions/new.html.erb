@@ -33,10 +33,4 @@
     </div>
 </div>
 
-<% if flash %>
-  <% flash.each do |key, value| %>
-    <script>
-          $.notify("<%= value %>", "info")
-    </script>
-  <% end %>
-<% end %>
+<%= render partial: 'layouts/shared/notifications' %>
