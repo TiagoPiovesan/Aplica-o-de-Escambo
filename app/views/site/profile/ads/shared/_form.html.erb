@@ -43,10 +43,21 @@
       <%= f.file_field :picture %>
     </div>
 
+</div>
+<div class="col-xs-12">
     <div class="form-group">
       <%= f.label :description %>
       <%= f.text_area :description, class: "form-control", rows: 20 %>
     </div>
+
+    <dib class="panel panel-primary">
+      <div class="panel-heading">
+        Pré-Visualização
+      </div>
+      <div class="panel-body">
+        <%= md_to_html(@ad.description) %>
+      </div>
+    </dib>
 
     <%= submit_tag "Enviar", class: 'btn btn-default' %>
   <% end %>

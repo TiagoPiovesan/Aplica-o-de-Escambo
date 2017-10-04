@@ -57,7 +57,7 @@ namespace :dev do
     5.times do
       Ad.create!(
         title: Faker::Lorem.sentence([2,3,4,5].sample),
-        description: LeroleroGenerator.paragraph(Random.rand(1..3)),
+        description: markdonw_fake,
         member: Member.first,
         finish_date: Date.today + Random.rand(90),
         category: Category.all.sample,
@@ -70,7 +70,7 @@ namespace :dev do
     100.times do
       Ad.create!(
         title: Faker::Lorem.sentence([2,3,4,5].sample),
-        description: LeroleroGenerator.paragraph(Random.rand(1..3)),
+        description: markdonw_fake,
         member: Member.all.sample,
         finish_date: Date.today + Random.rand(90),
         category: Category.all.sample,
@@ -82,5 +82,9 @@ namespace :dev do
 
     puts "ANÚNCIOS cadastrados com sucesso"
 
+  end
+
+  def markdonw_fake
+    %x(ruby -e "require 'doctor_ipsum'; puts DoctorIpsum::Markdown.entry")
   end
 end
