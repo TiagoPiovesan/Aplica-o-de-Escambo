@@ -32,13 +32,21 @@ gem 'redcarpet'
 source 'https://rails-assets.org' do
   #bootstrap growl
   gem 'rails-assets-bootstrap.growl'
+
   #Animate CSS
   gem 'rails-assets-animate-css'
 
   #bootboxJS
   gem 'rails-assets-bootbox'
+
   #Boostrap
   gem 'rails-assets-bootstrap', '3.3.7'
+
+  #markdonw editor bootstrap
+  gem 'rails-assets-bootstrap-markdown'
+
+  #preview markdown
+  gem 'rails-assets-marked'
 end
 # **
 

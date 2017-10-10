@@ -57,7 +57,8 @@ namespace :dev do
     5.times do
       Ad.create!(
         title: Faker::Lorem.sentence([2,3,4,5].sample),
-        description: markdonw_fake,
+        description_short: Faker::Lorem.sentence([2,3].sample),
+        description_md: markdonw_fake,
         member: Member.first,
         finish_date: Date.today + Random.rand(90),
         category: Category.all.sample,
@@ -70,7 +71,8 @@ namespace :dev do
     100.times do
       Ad.create!(
         title: Faker::Lorem.sentence([2,3,4,5].sample),
-        description: markdonw_fake,
+        description_short: Faker::Lorem.sentence([2,3].sample),
+        description_md: markdonw_fake,
         member: Member.all.sample,
         finish_date: Date.today + Random.rand(90),
         category: Category.all.sample,
