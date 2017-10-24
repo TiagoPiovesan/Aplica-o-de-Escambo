@@ -1,20 +1,40 @@
 
+
+
 <div class="card mt-4">
   <%= image_tag @ad.picture.url(:large), class: 'card-img-top img-fluid' %>
   <div class="card-body">
     <h3 class="card-title"><%= @ad.title %></h3>
     <h4><%= humanized_money_with_symbol @ad.price %></h4>
     <p class="card-text"><%= @ad.description.html_safe %></p>
-    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-    4.0 stars
+  
+    <div class="well well-sm">
+      <div class="ratings">
+        <p class="pull-right"><%= @ad.comments.count %> Comentários</p>
+
+          <%= rating_for @ad, 'quality'%>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="well">
+    <div class="card-header">
+      <h2>Comentários</h2>
+    </div>
+    <div class="card-body">
+      
+      <%= render partial: 'site/ad_detail/comments' %>
+
+      <% if member_signed_in? %>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#commentModal">
+          Deixe um comentário
+        </button>
+        <% else %>
+         <%= link_to "Efetue login para comentar", new_member_session_path , class: 'btn btn-success' %>
+      <% end -%>
+    </div>
   </div>
 </div>
-<!-- /.card -->
 
-<div class="card card-outline-secondary my-4">
-  <div class="card-header">
-    Product Reviews
-  </div>
-</div>
-<!-- /.card -->
-
+<%= render partial: 'site/ad_detail/comment_modal' %>

@@ -1,3 +1,5 @@
+//= require jquery.raty
+//= require ratyrate
 //= require bootstrap
 //= require wiselinks
 

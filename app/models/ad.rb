@@ -1,4 +1,9 @@
 class Ad < ActiveRecord::Base
+  # Constantes
+  QTT_PER_PAGE = 6
+
+  # RatyRate gem
+  ratyrate_rateable 'quality'
 
   #Callback
   before_save :md_to_html
@@ -6,6 +11,7 @@ class Ad < ActiveRecord::Base
   #associações
   belongs_to :category, counter_cache: true
   belongs_to :member
+  has_many :comments
 
   #validates
   validates :title, :description_md, :description_short, :category, :price, :picture, :finish_date, presence:true
@@ -13,9 +19,16 @@ class Ad < ActiveRecord::Base
 
 
   # scopo
-  scope  :descending_order, -> (quantity = 10) { order(created_at: :desc).limit(quantity) }
+  scope  :descending_order, -> ( page ) {
+   order(created_at: :desc).page(page).per(QTT_PER_PAGE)
+  }
+  
   scope  :to_the, -> (member) { where(member: member) }
-  scope  :by_category, -> (id) { where(category: id) }
+  scope  :by_category, -> (id, page) { where(category: id).page(page).per(QTT_PER_PAGE) }
+
+  scope  :search, -> (q,  page ) { 
+    where("title LIKE ?", "%#{q}%").page(page).per(QTT_PER_PAGE) 
+  }
 
   #PaperClip
   has_attached_file :picture, styles: { medium: "320x150#", thumb: "100x100>", large: "800x300#" }, default_url: "/images/:style/missing.png"

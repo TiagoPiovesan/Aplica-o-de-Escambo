@@ -1,4 +1,9 @@
 class Member < ActiveRecord::Base
+
+  #Raty Rate gem
+  ratyrate_rater
+
+  # Assosiations
   has_many :ads
 
   # Include default devise modules. Others available are:
