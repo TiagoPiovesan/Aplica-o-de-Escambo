@@ -33,4 +33,7 @@
     </div>
 </div>
 
-<%= render partial: 'layouts/shared/notifications' %>
+<% flash.each do |key, value| %>
+      <%= javascript_tag "$.notify ({ message: '#{value}' } , { type: 'danger',
+      placement: { from: 'top', align: 'center' }});" %>
+<% end %>

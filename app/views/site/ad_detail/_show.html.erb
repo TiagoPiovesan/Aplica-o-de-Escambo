@@ -1,16 +1,13 @@
-
-
-
 <div class="card mt-4">
   <%= image_tag @ad.picture.url(:large), class: 'card-img-top img-fluid' %>
   <div class="card-body">
     <h3 class="card-title"><%= @ad.title %></h3>
-    <h4><%= humanized_money_with_symbol @ad.price %></h4>
+    <h4 class="pull-right" ><%= humanized_money_with_symbol @ad.price %></h4>
     <p class="card-text"><%= @ad.description.html_safe %></p>
   
     <div class="well well-sm">
       <div class="ratings">
-        <p class="pull-right"><%= @ad.comments.count %> Comentários</p>
+        <p class="pull-right"><%= @ad.rates('quality').count %> Avaliações</p>
 
           <%= rating_for @ad, 'quality'%>
 

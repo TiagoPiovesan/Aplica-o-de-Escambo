@@ -30,6 +30,8 @@ class Ad < ActiveRecord::Base
     where("title LIKE ?", "%#{q}%").page(page).per(QTT_PER_PAGE) 
   }
 
+  scope :random, -> (quantity) {limit(quantity).order("RANDOM()")}
+
   #PaperClip
   has_attached_file :picture, styles: { medium: "320x150#", thumb: "100x100>", large: "800x300#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/

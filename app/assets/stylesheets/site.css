@@ -2,9 +2,12 @@
 *= require bootstrap
 */
 
-div.star img, star{
+div.ratings div.star img, star{
   width: 18px;
-  text-align: center;
+}
+
+.search{
+    margin-top: 10px;
 }
 
 .ratings{
