@@ -1,6 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.0"
 
+require "bundler/capistrano"
+
 set :application, "EscamboApp"
 set :repo_url, "https://github.com/TiagoPiovesan/Aplicao-de-Escambo_Rails.git"
 
