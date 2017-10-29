@@ -37,6 +37,8 @@ gem 'kaminari-i18n', '~> 0.3.2'
 # A Ruby Gem that wraps the functionality of jQuery Raty library, and provides optional IMDB style rating.
 gem 'ratyrate'
 
+
+
 source 'https://rails-assets.org' do
   #bootstrap growl
   gem 'rails-assets-bootstrap.growl'
@@ -95,6 +97,9 @@ group :development, :test do
   #Generate Entity-Relationship Diagrams for Rails applications < diagramas de relacionamento - rake erd
   gem 'rails-erd'
 
+  # Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
+  gem 'rack-cors', :require => 'rack/cors'
+
   #Better error page for Rack apps
   gem 'better_errors'
 
@@ -113,6 +118,9 @@ group :development, :test do
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  # Biblioteca de integração em Ruby
+  gem "pagseguro-oficial", "~> 2.5.0"
 
   gem 'capistrano-rvm'
   gem 'capistrano', '~> 3.7'

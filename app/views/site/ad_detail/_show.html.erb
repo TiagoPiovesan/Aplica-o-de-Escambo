@@ -1,8 +1,26 @@
 <div class="card mt-4">
-  <%= image_tag @ad.picture.url(:large), class: 'card-img-top img-fluid' %>
+  <div class="text-center">
+    <%= image_tag @ad.picture.url(), class: 'card-img-top img-fluid', style: "height: 450px" %>
+  </div>
   <div class="card-body">
     <h3 class="card-title"><%= @ad.title %></h3>
     <h4 class="pull-right" ><%= humanized_money_with_symbol @ad.price %></h4>
+
+    <% if @ad.active? %>
+
+      <% if member_signed_in? %>
+        <%= form_tag(checkout_payments_path) do %>
+          <%= hidden_field_tag :ad_id, @ad.id %>
+          <%= submit_tag "Comprar", class: "btn btn-success", data:
+          {confirm:'Deseja realmente comprar?'} %>
+        <% end %>
+      <% else %>
+         <%= link_to "Efetue login para comprar", new_member_session_path , class: 'btn btn-success' %>
+      <% end -%>
+    <% else %>
+      <%= link_to "#{ @ad.status_i18n }", '#' , class: 'btn btn-success', disabled: true %>
+    <% end %>
+
     <p class="card-text"><%= @ad.description.html_safe %></p>
   
     <div class="well well-sm">

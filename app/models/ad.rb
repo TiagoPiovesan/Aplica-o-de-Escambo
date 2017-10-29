@@ -39,6 +39,10 @@ class Ad < ActiveRecord::Base
   #gem money rails
   monetize :price_cents
 
+
+  # Enum
+  enum status: [:active, :processing, :sold]
+
   private
 
   #função que converte o markdown em html passando ass opções 
